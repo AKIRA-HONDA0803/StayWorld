@@ -51,3 +51,27 @@ img {
   // $contentMaxWidthはmodules/_variables.scssにて定義
   max-width: $contentMaxWidth;
 }
+
+.main-title {
+  @extend .font-lg;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.sub-title {
+  @extend .font-sm;
+  color: $cSubTitle;
+}
+
+.houses {
+  @extend .content-width;
+
+  &__title {
+    @extend .font-lr;
+    @extend .mb-sm;
+  }
+
+  &__btn {
+    text-align: center;
+  }
+}
