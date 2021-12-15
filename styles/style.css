@@ -763,7 +763,7 @@ img {
   font-size: 14px;
 }
 
-.font-md {
+.font-md, .popular__title {
   font-size: 17px;
 }
 
@@ -775,7 +775,7 @@ img {
   font-size: 25px;
 }
 
-.mb-sm, .houses__title {
+.mb-sm, .houses__title, .popular__title {
   margin-bottom: 16px !important;
 }
 
@@ -783,7 +783,7 @@ img {
   margin-bottom: 80px !important;
 }
 
-.pb-sm {
+.pb-sm, .popular__container {
   padding-bottom: 16px !important;
 }
 
@@ -791,7 +791,7 @@ img {
   padding-bottom: 80px !important;
 }
 
-.content-width, .houses {
+.content-width, .houses, .popular__header, .popular__container {
   width: 90%;
   margin: 0 auto;
   max-width: 1070px;
@@ -806,7 +806,7 @@ img {
   color: #535353;
 }
 
-.flex, .houses__inner {
+.flex, .houses__inner, .popular__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -820,6 +820,44 @@ img {
   text-align: center;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
+}
+
+.popular__inner {
+  position: relative;
+}
+
+.popular__inner::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background-color: #eaebe6;
+}
+
+.popular__container {
+  position: relative;
+  z-index: 2;
+}
+
+.popular__btn {
+  text-align: center;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+.popular__img {
+  height: 150px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.popular__img > img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 @media (min-width: 480px) {
@@ -836,7 +874,7 @@ Stylesheet: 480px以上(スマホの横向き)のモニタで適用
 Stylesheet: 600px以上のタブレットやモニタで適用
 
 ******************************************************************/
-  .flex, .houses__inner {
+  .flex, .houses__inner, .popular__container {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -849,6 +887,15 @@ Stylesheet: 600px以上のタブレットやモニタで適用
         flex-basis: 50%;
     margin-bottom: 60px;
   }
+  .popular__container {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .popular__item {
+    -ms-flex-preferred-size: 47%;
+        flex-basis: 47%;
+  }
 }
 
 @media (min-width: 960px) {
@@ -860,7 +907,7 @@ Stylesheet: 960px以上のモニタで適用
   .font-sm, .sub-title {
     font-size: 16px;
   }
-  .font-md {
+  .font-md, .popular__title {
     font-size: 19px;
   }
   .font-lr, .houses__title {
@@ -875,6 +922,13 @@ Stylesheet: 960px以上のモニタで適用
   .pb-lg {
     padding-bottom: 150px !important;
   }
+  .popular__item {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+  }
+  .popular__img {
+    height: 335px;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -883,15 +937,9 @@ Stylesheet: 960px以上のモニタで適用
 Stylesheet: 1280px以上のモニタで適用
 
 ******************************************************************/
-  .travel__inner {
-    padding: 50px 150px;
-  }
   .popular__item {
     -ms-flex-preferred-size: 23%;
         flex-basis: 23%;
-  }
-  .side {
-    display: block;
   }
 }
 

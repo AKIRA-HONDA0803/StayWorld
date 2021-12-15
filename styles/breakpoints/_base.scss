@@ -86,3 +86,54 @@ img {
     flex-basis: 100%;
   }
 }
+
+.popular {
+  &__inner {
+    position: relative;
+    &::before {
+      // 文字を表示しない場合でもcontentとして空文字にする必要がある（今回は背景色の設定のため）
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 90%;
+      background-color: $cBgGray;
+    }
+  }
+
+  &__header {
+    @extend .content-width;
+  }
+  &__container {
+    // 背景色よりも前面に持ってくる
+    position: relative;
+    z-index: 2;
+    @extend .flex;
+    @extend .content-width;
+    @extend .pb-sm;
+  }
+
+  &__title {
+    @extend .font-md;
+    @extend .mb-sm;
+  }
+
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+
+  &__img {
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 5px;
+
+    & > img {
+      // 横と縦100%で画像が収まるように調整
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
