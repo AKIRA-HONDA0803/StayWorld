@@ -47,3 +47,21 @@ Stylesheet: 960px以上のモニタで適用
     }
   }
 }
+
+.footer {
+  &__li {
+    justify-content: flex-start;
+  }
+}
+
+.header {
+  &__nav {
+    display: block;
+  }
+}
+
+.mobile-menu {
+  &__btn {
+    display: none;
+  }
+}
