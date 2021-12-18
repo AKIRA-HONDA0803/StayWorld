@@ -18,5 +18,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     const so2 = new ScrollObserver('.cover-slide', _inviewAnimation);
+
+    // headerクラスのtriggeredのオンオフを操作
+    const header = document.querySelector('.header');
+    const _navAnimation = function(el, inview) {
+        if(inview) {
+            header.classList.add('triggered');
+        }else{
+            header.classList.add('triggered');
+        }
+    }
+    const so3 = new ScrollObserver('.nav-trigger', _inviewAnimation, {once: false});
+    new MobileMenu();
 });
 

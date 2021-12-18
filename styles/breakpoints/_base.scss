@@ -56,6 +56,7 @@ img {
   @extend .font-lg;
   font-weight: 600;
   margin-bottom: 0;
+  display: block;
 }
 
 .sub-title {
@@ -76,6 +77,13 @@ img {
   padding-top: $navHeight;
 }
 
+#container {
+  background-color: $cWhite;
+  position: relative;
+  z-index: 10;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -86,6 +94,11 @@ img {
   display: flex;
   align-items: center;
   z-index: 100;
+
+  &.triggered {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 10px 0 25px -10px rgba(0, 0, 0, 0.5);
+  }
 
   &__nav {
     display: none;
@@ -113,13 +126,13 @@ img {
     font-size: 38px;
     justify-content: center;
   }
-}
 
-&__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @extend .content-width;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @extend .content-width;
+  }
 }
 
 .travel {
