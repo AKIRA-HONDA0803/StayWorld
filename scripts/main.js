@@ -32,8 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
 class Main {
     constructor() {
         this.header = document.querySelector('.header');
+        this.sides = document.querySelectorAll('.side');
         this._observers = [];
-        this._scrollInit();
+        // this._scrollInit();
         this._init()
     }
 // セッター
@@ -48,19 +49,19 @@ class Main {
     _init() {
         new MobileMenu();
         this.hero = new HeroSlider('.swiper-container');
-        package.on('done', this._paceDone.bind(this));
-        this._scrollInit();
+        Pace.on('done', this._paceDone.bind(this));
+        // this._scrollInit();
     }
 // 画面の更新後にアニメーションを開始
     _paceDone() {
         this._scrollInit();
     }
 
-    _inviewAnimation = function(el, inview) {
+    _inviewAnimation(el, inview) {
         if(inview) {
             el.classList.add('inview');
         }else{
-            el.classList.add('inview');
+            el.classList.remove('inview');
         }
     }
 
@@ -71,6 +72,15 @@ class Main {
             this.header.classList.add('triggered');
         }
     }
+
+    _sideAnimation(el, inview) {
+        if(inview) {
+            this.sides.forEach(side => side.classList.add('inview'));
+        }else{
+            this.sides.forEach(side => side.classList.remove('inview'));
+        }
+    }
+
     _textAnimation(el, inview) {
         if(inview) {
             const ta = new TweenTextAnimation(el);
@@ -90,8 +100,11 @@ class Main {
     _scrollInit() {
         this.observers = new ScrollObserver('.nav-trigger', this._navAnimation.bind(this), {once: false});
         this.observers = new ScrollObserver('.cover-slide', this._inviewAnimation);
+        this.observers = new ScrollObserver('.appear', this._inviewAnimation);
         this.observers = new ScrollObserver('.tween-animate-title', this._textAnimation);
         this.observers = new ScrollObserver('.swiper-container', this._toggleSlideAnimation.bind(this), {once: false});
+        this.observers = new ScrollObserver('#main-content', this._sideAnimation.bind(this), {once: false, rootMargin: "-300px 0px"});
+        // rootMarginを設定することによって発火するタイミングを制御できる
     }
 }
 
