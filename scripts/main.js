@@ -67,7 +67,7 @@ class Main {
 
     _navAnimation(el, inview) {
         if(inview) {
-            this.header.classList.add('triggered');
+            this.header.classList.remove('triggered');
         }else{
             this.header.classList.add('triggered');
         }
@@ -96,12 +96,22 @@ class Main {
         }
     }
 
+    _destroyObservers() {
+        this.observers.forEach(ob => {
+            ob.destroy();
+        });
+    }
+
+    destroy() {
+        this._destroyObservers();
+    }
+
 
     _scrollInit() {
         this.observers = new ScrollObserver('.nav-trigger', this._navAnimation.bind(this), {once: false});
         this.observers = new ScrollObserver('.cover-slide', this._inviewAnimation);
         this.observers = new ScrollObserver('.appear', this._inviewAnimation);
-        this.observers = new ScrollObserver('.tween-animate-title', this._textAnimation);
+        this.observers = new ScrollObserver('.tween-animate-title', this._textAnimation, {rootMargin: "-200px 0px"});
         this.observers = new ScrollObserver('.swiper-container', this._toggleSlideAnimation.bind(this), {once: false});
         this.observers = new ScrollObserver('#main-content', this._sideAnimation.bind(this), {once: false, rootMargin: "-300px 0px"});
         // rootMarginを設定することによって発火するタイミングを制御できる

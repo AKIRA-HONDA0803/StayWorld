@@ -7,68 +7,54 @@ body {
   // ローマ字のフォント,日本語のフォントの順にする（Noto Sans JPを最初にするとそれが読み込まれる）
   font-family: "Kameron", "Noto Sans JP", sans-serif;
 }
-
 img {
   max-width: 100%;
   vertical-align: bottom;
 }
-
 .font-sm {
   font-size: 14px;
 }
-
 .font-md {
   font-size: 17px;
 }
-
 .font-lr {
   font-size: 17px;
 }
-
 .font-lg {
   font-size: 25px;
 }
-
 .mb-sm {
   margin-bottom: 16px !important;
 }
-
 .mb-lg {
   margin-bottom: 80px !important;
 }
-
 .pb-sm {
   padding-bottom: 16px !important;
 }
-
 .pb-lg {
   padding-bottom: 80px !important;
 }
-
 .content-width {
   width: 90%;
   margin: 0 auto;
   // $contentMaxWidthはmodules/_variables.scssにて定義
   max-width: $contentMaxWidth;
 }
-
 .main-title {
   @extend .font-lg;
   font-weight: 600;
   margin-bottom: 0;
   display: block;
 }
-
 .sub-title {
   @extend .font-sm;
   color: $cSubTitle;
 }
-
 .flex {
   display: flex;
   flex-direction: column;
 }
-
 .purple {
   color: $cWineRed;
 }
@@ -112,7 +98,7 @@ main {
 
   &__ul {
     display: flex;
-    align-items: enter;
+    align-items: center;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -229,16 +215,19 @@ main {
 .popular {
   &__inner {
     position: relative;
-    &::before {
-      // 文字を表示しない場合でもcontentとして空文字にする必要がある（今回は背景色の設定のため）
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 90%;
+    @include p-base($top: 10%, $height: 90%) {
       background-color: $cBgGray;
     }
+    // &::before {
+    // 文字を表示しない場合でもcontentとして空文字にする必要がある（今回は背景色の設定のため）
+    // content: "";
+    // position: absolute;
+    // bottom: 0;
+    // left: 0;
+    // width: 100%;
+    // height: 90%;
+    // background-color: $cBgGray;
+    // }
   }
 
   &__header {
@@ -344,23 +333,24 @@ main {
     &.inview {
       left: 50px;
     }
-  }
 
-  & .side__inner {
-    transform-origin: top left;
-    transform: rotate(-90deg);
+    & .side__inner {
+      transform-origin: top left;
+      transform: rotate(-90deg);
+    }
   }
 
   &.right {
     right: -50px;
+
     &.inview {
       right: 50px;
     }
-  }
 
-  & .side__inner {
-    transform-origin: top right;
-    transform: rotate(90deg);
+    & .side__inner {
+      transform-origin: top right;
+      transform: rotate(90deg);
+    }
   }
 }
 
@@ -376,13 +366,13 @@ main {
 
   &.twitter {
     &::before {
-      background-image: url(..images/twitter.svg);
+      background-image: url(../images/twitter.svg);
     }
   }
 
   &.fb {
     &::before {
-      background-image: url(..images/facebook.svg);
+      background-image: url(../images/facebook.svg);
     }
   }
 }
