@@ -1203,6 +1203,69 @@ img {
           justify-content: center;
 }
 
+.side {
+  display: none;
+  position: fixed;
+  top: 70%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: black;
+}
+
+.side a {
+  color: black;
+  text-decoration: none !important;
+}
+
+.side.left {
+  left: 50px;
+}
+
+.side .side__inner {
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.side.right {
+  right: 50px;
+}
+
+.side .side__inner {
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.icon {
+  position: relative;
+}
+
+.icon::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  width: 1em;
+  height: 1em;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.icon.twitter::before {
+  background-image: url(..images/twitter.svg);
+}
+
+.icon.fb::before {
+  background-image: url(..images/facebook.svg);
+}
+
 @media (min-width: 480px) {
   /******************************************************************
 
@@ -1330,6 +1393,9 @@ Stylesheet: 1280px以上のモニタで適用
   .popular__item {
     -ms-flex-preferred-size: 23%;
         flex-basis: 23%;
+  }
+  .side {
+    display: block;
   }
 }
 
