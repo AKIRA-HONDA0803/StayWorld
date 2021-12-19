@@ -242,6 +242,7 @@
 
 .hero {
   overflow: hidden;
+  padding-top: 100px;
 }
 
 .hero__title {
@@ -925,7 +926,7 @@ img {
   margin-bottom: 16px !important;
 }
 
-.mb-lg {
+.mb-lg, .travel, .houses, .popular__btn {
   margin-bottom: 80px !important;
 }
 
@@ -933,7 +934,7 @@ img {
   padding-bottom: 16px !important;
 }
 
-.pb-lg {
+.pb-lg, .hero {
   padding-bottom: 80px !important;
 }
 
@@ -967,8 +968,14 @@ img {
   color: #904669;
 }
 
-#content {
-  padding-top: 100px;
+#main-content {
+  position: relative;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: -1;
 }
 
 #container {
@@ -1212,9 +1219,12 @@ img {
   color: black;
 }
 
-.side a {
+.side a,
+.side span {
   color: black;
   text-decoration: none !important;
+  margin: 0 40px;
+  vertical-align: middle;
 }
 
 .side.left {
@@ -1346,10 +1356,10 @@ Stylesheet: 960px以上のモニタで適用
   .font-lg, .main-title {
     font-size: 36px;
   }
-  .mb-lg {
+  .mb-lg, .travel, .houses, .popular__btn {
     margin-bottom: 150px !important;
   }
-  .pb-lg {
+  .pb-lg, .hero {
     padding-bottom: 150px !important;
   }
   .popular__item {
@@ -1378,6 +1388,10 @@ Stylesheet: 960px以上のモニタで適用
   }
   .mobile-menu__btn {
     display: none;
+  }
+  .swiper-slide {
+    -webkit-box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
   }
 }
 
