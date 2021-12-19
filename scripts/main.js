@@ -36,11 +36,23 @@ class Main {
         this._scrollInit();
         this._init()
     }
+// セッター
+    set observers(val) {
+        this._observers.push(val);
+    }
+// ゲッター
+    get observers() {
+        return this._observers;
+    }
 
     _init() {
         new MobileMenu();
-
         this.hero = new HeroSlider('.swiper-container');
+        package.on('done', this._paceDone.bind(this));
+        this._scrollInit();
+    }
+// 画面の更新後にアニメーションを開始
+    _paceDone() {
         this._scrollInit();
     }
 
@@ -76,14 +88,10 @@ class Main {
 
 
     _scrollInit() {
-        this._observers.push (
-            new ScrollObserver('.nav-trigger', this._navAnimation.bind(this), {once: false})
-        );
-        this._observers.push(
-            new ScrollObserver('.cover-slide', this._inviewAnimation)
-        );
-        new ScrollObserver('.tween-animate-title', this._textAnimation);
-        new ScrollObserver('.swiper-container', this._toggleSlideAnimation.bind(this), {once: false}); 
+        this.observers = new ScrollObserver('.nav-trigger', this._navAnimation.bind(this), {once: false});
+        this.observers = new ScrollObserver('.cover-slide', this._inviewAnimation);
+        this.observers = new ScrollObserver('.tween-animate-title', this._textAnimation);
+        this.observers = new ScrollObserver('.swiper-container', this._toggleSlideAnimation.bind(this), {once: false});
     }
 }
 
